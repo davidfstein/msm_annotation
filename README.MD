@@ -36,3 +36,5 @@ the plugin directory and plugin data are children of the cache directory.
 annotate_msm -h
 annotate_msm -i test.vcf -o test_output.tsv
 ```
+
+DEFAULT_VEP_OPTIONS constructs the VEP command that is run. This may be replaced or edited for different VEP behavior.
