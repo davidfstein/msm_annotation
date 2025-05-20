@@ -28,7 +28,7 @@ cp example.env .env
 ```
 After copying the example.env file, update the values for your system.
 VEP_DATA should point to the location of the VEP cache. VEP_CACHEDIR is relative to the container and does not need to be changed. The remaining
-variables may updated according to your directory structure, but ensure that
+variables may be updated according to your directory structure, but ensure that
 the plugin directory and plugin data are children of the cache directory.
 
 ### Usage
