@@ -14,13 +14,16 @@ def generate_vep_command(**kwargs):
         command.extend(option)
     return command
 
-def vep(vep_command, input_location, vep_image='ensemblorg/ensembl-vep:release_112.0'):
+def vep(vep_command, input_location, additional_bind_dirs=None, vep_image='ensemblorg/ensembl-vep:release_112.0'):
     singularity_image = f'docker://{vep_image}'
     bind_dirs = [
         f"{input_location}:/input",
         f"{os.getcwd()}:/vep_output",
         f"{os.environ.get('VEP_DATA')}:/data"
     ]
+    if additional_bind_dirs:
+        for d in additional_bind_dirs:
+            bind_dirs.append(f"{d}:{d}")
     
     singularity_command = ['singularity', 'exec', '--containall']
     

@@ -32,6 +32,14 @@ def parse_args():
     )
 
     parser.add_argument(
+        '--bind_dirs',
+        nargs='+',
+        type=str,
+        required=False,
+        help="(optional) Additional directories to bind to container, separated by spaces. Necessary for symlinks. Must provide absolute paths."
+    )
+
+    parser.add_argument(
         '-q', '--quiet',
         action='store_true',
         help="Suppress VEP command information"
@@ -39,15 +47,15 @@ def parse_args():
     return parser.parse_args()
 
 
-def run_vep(input_path, output_path, vep_container, quiet):
+def run_vep(input_path, output_path, bind_dirs, vep_container, quiet):
     vep_command = vep.generate_vep_command(**default_vep_options.DEFAULT_VEP_OPTIONS(input_path, output_path))
     if not quiet:
         print(vep_command)
-    vep.vep(vep_command, os.path.abspath(os.path.dirname(input_path)), vep_container)
+    vep.vep(vep_command, os.path.abspath(os.path.dirname(input_path)), bind_dirs, vep_container)
 
 def main():
     args = parse_args()
-    run_vep(args.input, args.output, args.vep_container, args.quiet)
+    run_vep(args.input, args.output, args.bind_dirs, args.vep_container, args.quiet)
 
 if __name__ == '__main__':
     main()
