@@ -6,7 +6,7 @@ Add plugins and adjust plugin options.
 PLUGINS = [
     f"AlphaMissense,file={os.environ.get('ALPHAMISSENSE_DATA')},transcript_match=1",
     'Blosum62',
-    f"CADD,snv={os.environ.get('CADD_SNV_DATA')},indels={os.environ.get('CADD_INDEL')}",
+    f"CADD,snv={os.environ.get('CADD_SNV_DATA')},indels={os.environ.get('CADD_INDEL_DATA')}",
     'Carol',
     'Conservation',
     f"dbNSFP,{os.environ.get('DBNSFP_DATA')},transcript_match=1,ALL",
