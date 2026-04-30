@@ -9,7 +9,7 @@ setup(
     packages=find_packages(exclude=["tests*", "docs*"]),
     python_requires=">=3.11",
     install_requires=[
-        "python-dotenv",     # specify a minimum if you like
+        "python-dotenv",
     ],
     entry_points={
         "console_scripts": [
