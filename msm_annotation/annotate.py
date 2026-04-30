@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 import argparse
+from pathlib import Path
 from .utils.sh_utils import vep, default_vep_options
 
 def parse_args():
@@ -48,10 +49,13 @@ def parse_args():
 
 
 def run_vep(input_path, output_path, bind_dirs, vep_container, quiet):
-    vep_command = vep.generate_vep_command(**default_vep_options.DEFAULT_VEP_OPTIONS(input_path, output_path))
+    input_loc = Path(input_path)
+    dir_path = input_loc.resolve().parent
+    input_name = input_loc.name
+    vep_command = vep.generate_vep_command(**default_vep_options.DEFAULT_VEP_OPTIONS(input_name, output_path))
     if not quiet:
         print(vep_command)
-    vep.vep(vep_command, os.path.abspath(os.path.dirname(input_path)), bind_dirs, vep_container)
+    vep.vep(vep_command, dir_path, bind_dirs, vep_container)
 
 def main():
     args = parse_args()
