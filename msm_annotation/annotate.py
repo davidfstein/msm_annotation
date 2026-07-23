@@ -28,8 +28,8 @@ def parse_args():
         '--vep_container',
         type=str,
         required=False,
-        default='ensemblorg/ensembl-vep:release_112.0',
-        help="(optional) Name of a VEP container to be pulled from docker hub. Default: ensemblorg/ensembl-vep:release_112.0"
+        default='ensemblorg/ensembl-vep:release_115.0',
+        help="(optional) Name of a VEP container to be pulled from docker hub. Default: ensemblorg/ensembl-vep:release_115.0"
     )
 
     parser.add_argument(

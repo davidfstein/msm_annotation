@@ -11,7 +11,6 @@ PLUGINS = [
     'Conservation',
     f"dbNSFP,{os.environ.get('DBNSFP_DATA')},transcript_match=1,ALL",
     f"dbscSNV,{os.environ.get('DBSCSNV_DATA')}",
-    f"DisGeNET,file={os.environ.get('DISGENET_DATA')},disease=1",
     f"DosageSensitivity,file={os.environ.get('DOSAGESENSITIVITY_DATA')}",
     f"Enformer,file={os.environ.get('ENFORMER_DATA')}",
     f"IntAct,mutation_file={os.environ.get('INTACT_MUTATION_DATA')},mapping_file={os.environ.get('INTACT_MAPPING_DATA')}",
@@ -31,7 +30,7 @@ PLUGINS = [
     f"SpliceAI,snv={os.environ.get('SPLICEAI_SNV_DATA')},indel={os.environ.get('SPLICEAI_INDEL_DATA')}",
     "TSSDistance",
     f"UTRAnnotator,file={os.environ.get('UTRANNOTATOR_SNV_DATA')}",
-    f"LoF,loftee_path:{os.environ.get('VEP_PLUGDIR')},conservation_file:{os.environ.get('VEP_PLUGDIR')}/phylocsf_gerp.sql,human_ancestor_fa:{os.environ.get('VEP_PLUGDIR')}/human_ancestor.fa.gz",
+    f"LoF,loftee_path:{os.environ.get('LOFTEE_PATH')},conservation_file:{os.environ.get('LOFTEE_PATH')}/phylocsf_gerp.sql,human_ancestor_fa:{os.environ.get('LOFTEE_PATH')}/human_ancestor.fa.gz",
 ]
 '''
 Add custom annotation options and adjust options.
@@ -76,8 +75,8 @@ DEFAULT_VEP_OPTIONS = lambda in_path, out_path: {
     '--total_length': None,
     '--offline': None,
     '--fasta': os.environ.get('VEP_REF_FASTA'),
-    '--buffer_size': 100000,
-    '--fork': 8,
+    '--buffer_size': 1000,
+    '--fork': 20,
     '--plugin': PLUGINS,
     '--custom': CUSTOM,
 }
