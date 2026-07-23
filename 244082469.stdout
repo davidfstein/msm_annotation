@@ -1,0 +1,60 @@
+Sender: LSF System <lsfadmin@lc06e51>
+Subject: Job 244082469: <msmann> in cluster <chimera> Done
+
+Job <msmann> was submitted from host <li04e02> by user <steind16> in cluster <chimera> at Thu May 14 18:05:31 2026
+Job was executed on host(s) <20*lc06e51>, in queue <premium>, as user <steind16> in cluster <chimera> at Thu May 14 18:05:34 2026
+</hpc/users/steind16> was used as the home directory.
+</hpc/users/steind16/Projects/Itan_lab/Itan_lab/david/MSM_annotation> was used as the working directory.
+Started at Thu May 14 18:05:34 2026
+Terminated at Thu May 14 18:05:36 2026
+Results reported at Thu May 14 18:05:36 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/usr/bin/env bash
+#BSUB -P acc_Itan_lab
+#BSUB -q premium
+#BSUB -n 20
+#BSUB -R span[hosts=1]
+#BSUB -o %J.stdout
+#BSUB -e %J.stderr
+#BSUB -R rusage[mem=4000MB]
+#BSUB -W 48:00
+
+ml proxies
+
+for f in /sc/arion/projects/MSM/data/WES/new_rgn/batch_002/pVCF/*vcf.gz; do
+    if [[ ! -f $(basename $f .vcf.gz).tsv ]]; then
+        bcftools view -G $f -Oz -o sites_only.vcf.gz
+        annotate_msm -i sites_only.vcf.gz -o $(basename $f .vcf.gz).tsv --bind_dirs /sc/arion/projects/Itan_lab/david/.vep/
+        rm sites_only.vcf.gz
+    fi
+done
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.88 sec.
+    Max Memory :                                 12 MB
+    Average Memory :                             12.00 MB
+    Total Requested Memory :                     80000.00 MB
+    Delta Memory :                               79988.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   1 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <244082469.stderr> for stderr output of this job.
+
