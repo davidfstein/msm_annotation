@@ -12,7 +12,7 @@ with the cache (see the link). Ensure that the plugin scripts and plugin data
 are installed under the VEP cache directory so that they are exposed in the
 singularity container.
 
-The package defaults to VEP version 112. It should be possible to drop in different versions, however
+The package defaults to VEP version 115. It should be possible to drop in different versions, however
 the cache and plugins will need to be updated. 
  
 ### Installation
